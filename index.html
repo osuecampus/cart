@@ -1,0 +1,243 @@
+<!-- Course AI Resilience Tracker (CART) Tool.
+HTML and JavaScript designed and built by Dr Philip Chambers, Instructional Design Specialist at Oregon State University Ecampus.
+Text content and plan designed by Ashlee Foster (Instructional Design Specialist), Dana Simionescu (Instructional Design Specialist), Philip Chambers (Instructional Design Specialist), Katherine McAlvage (Associate Director, Course Development and Training) and Cub Kahn (Blended & Hybrid Learning Consultant and College Liaison) of Oregon State University Ecampus.
+This work created by Oregon State University Ecampus is licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oregon State University Ecampus Course AI Resilience Tracker (CART)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="cart_styles.css">
+</head>
+
+<body>
+    <h1>Course AI Resilience Tracker (CART) Tool</h1>
+    <div id="landing-section" class="section active">
+        <p>The Course AI Resilience Tracker (CART) tool will help you evaluate and enhance the resiliency of your course in the context of generative artificial intelligence tools. Resilient courses are flexible, adaptable, transparent, and integrate opportunities for alternative learning pathways.</p>
+        <p>At the conclusion of the activity, you will be presented with your answers and notes as well as feedback on what you have inputted; you will be able to print or save this information. OSU is not collecting or tracking any information that you input. Closing, reopening, or refreshing the page will clear all entered information.</p>
+        <p>Should you choose to complete the diagnostic activity again (e.g., for a different course or at a later date), simply begin a new session by refreshing the page or returning here to begin again.</p>
+        <p>You should anticipate spending about 15 minutes to complete the activity.</p>
+
+        <h2>Course ID</h2>
+        <p>Please enter your course ID below (e.g. CS 161)</p>
+        <textarea id="course-id" rows="1" cols="10" placeholder="ABC 123"></textarea><br>
+        <button onclick="nextSection()">Start</button>
+    </div>
+
+    <!-- Section 1 - Learning Outcomes -->
+    <div id="section1" class="section">
+        <h2>Learning Outcomes</h2>
+        <p>Think about your Course Learning Outcomes (CLOs) relative to the current capabilities of GenAI tools. Check the verbs that are used in your outcomes or verbs that are similar, then select “Test Resiliency” to evaluate how AI tools might handle common tasks associated with these verbs. You can select up to 5 verbs at a time.</p>
+        <form id="verbsForm">
+            <div class="checkbox-group">
+                <h3 class="blooms-category">Remember</h3>
+                    <label><input type="checkbox" value="define"> Define</label>
+                    <label><input type="checkbox" value="describe"> Describe</label>
+                    <label><input type="checkbox" value="identify"> Identify</label>
+            </div>
+            <div class="checkbox-group">
+                <h3 class="blooms-category">Understand</h3>
+                    <label><input type="checkbox" value="discuss"> Discuss</label>
+                    <label><input type="checkbox" value="explain"> Explain</label>
+                    <label><input type="checkbox" value="summarize"> Summarize</label>
+            </div>
+            <div class="checkbox-group">
+                <h3 class="blooms-category">Apply</h3>
+                    <label><input type="checkbox" value="apply"> Apply</label>
+                    <label><input type="checkbox" value="calculate"> Calculate</label>
+                    <label><input type="checkbox" value="solve"> Solve</label>
+            </div>
+            <div class="checkbox-group">
+                <h3 class="blooms-category">Analyze</h3>
+                    <label><input type="checkbox" value="analyze"> Analyze</label>
+                    <label><input type="checkbox" value="compare"> Compare</label>
+                    <label><input type="checkbox" value="research"> Research</label>
+            </div>
+            <div class="checkbox-group">
+                <h3 class="blooms-category">Evaluate</h3>
+                    <label><input type="checkbox" value="assess"> Assess</label>
+                    <label><input type="checkbox" value="critique"> Critique</label>
+                    <label><input type="checkbox" value="evaluate"> Evaluate</label>
+            </div>
+            <div class="checkbox-group">
+                <h3 class="blooms-category">Create</h3>
+                    <label><input type="checkbox" value="create"> Create</label>
+                    <label><input type="checkbox" value="design"> Design</label>
+                    <label><input type="checkbox" value="write"> Write</label>
+            </div>
+        </form>
+        <p class="lato-bold" id="checkboxLimitMsg" style="font-weight: bold; color: #A00000; display: none;">You can select up to 5 verbs at a time.</p>
+        <button onclick="checkVulnerability()">Test Resiliency</button><br>
+        <div class="result" id="result"></div>
+        <div class="result-advice" id="result-advice"></div>
+        <button onclick="previousSection()">Previous</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 2 - Your Learners -->
+    <div id="section2" class="section">
+        <h2>Your Learners</h2>
+        <p>Think about your learners. Consider the following:</p>
+        <ul>
+            <li>What academic program(s) do learners come from, and why do they take the course?</li>
+            <li>What career paths do learners typically follow, and how is GenAI currently used in those fields?</li>
+            <li>What prior knowledge, skills, and/or experiences related to GenAI will learners come prepared with? (For example, is it used in other courses?)</li>
+            <li>What GenAI tools do learners currently have access to through the institution (tools that are free to students, include data protection, etc.)?</li>
+        </ul>
+        <p>In the text box below, describe your learners and any details you know about their exposure to, knowledge of, and access to GenAI.</p>
+        <textarea id="section2-response" rows="8" cols="100"></textarea><br>
+        <button onclick="previousSection()">Previous</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 3 - Learning Materials -->
+    <div id="section3" class="section">
+        <h2>Learning Materials</h2>
+        <p>How do you ensure the relevance and flexibility of your learning materials? Reflect on the approaches you currently employ. Select all that apply.</p>
+        <div class="grid-2x4">
+            <label><input type="checkbox" name="section3-options" value="Option 1"
+                    data-label="Update learning materials each quarter/term"
+                    onchange="handleCheckboxChange(event)">Update learning materials each quarter/term</label>
+            <label><input type="checkbox" name="section3-options" value="Option 2"
+                    data-label="Use current materials (within 5 years)" onchange="handleCheckboxChange(event)">
+                Use current materials (within 5 years)</label>
+            <label><input type="checkbox" name="section3-options" value="Option 3"
+                    data-label="Represent varied types of content (e.g., video, text)"
+                    onchange="handleCheckboxChange(event)">
+                Represent varied types of content (e.g., video, text, audio)</label>
+            <label><input type="checkbox" name="section3-options" value="Option 4"
+                    data-label="Create differentiated pathways through materials"
+                    onchange="handleCheckboxChange(event)">
+                Create differentiated pathways through materials</label>
+            <label><input type="checkbox" name="section3-options" value="Option 5"
+                    data-label="Allow for student choice to align with academic, personal, and professional interests"
+                    onchange="handleCheckboxChange(event)">
+                Allow for student choice to align with personal interest</label>
+            <label><input type="checkbox" name="section3-options" value="Option 6"
+                    data-label="Apply active learning techniques (e.g., social annotation, interactivity)"
+                    onchange="handleCheckboxChange(event)">
+                Apply active learning techniques (e.g., social annotation, interactivity)</label>
+            <label><input type="checkbox" id="other-checkbox" onchange="handleOtherCheckbox()"> Other (please
+                specify)</label>
+        </div>
+        <textarea id="other-text" style="display:none;" rows="2" cols="50" placeholder="Please specify..."></textarea>
+        <button onclick="submitSection3()">Get Feedback</button>
+        <div id="section3-feedback"></div>
+        <button onclick="previousSection()">Previous</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 4 - Activities and Assessments -->
+    <div id="section4" class="section">
+        <h2>Activities and Assessments</h2>
+        <!-- Question 4 -->
+        <p>Do specific activities, tasks, and assignments in the course articulate if, when, and how GenAI may be used?
+        </p>
+        <label><input type="radio" name="q4" value="yes" onchange="handleQ4Change(this.value)"> Yes</label><br>
+        <label><input type="radio" name="q4" value="no" onchange="handleQ4Change(this.value)"> No</label>
+        <div id="q4-feedback"></div>
+        <br>
+        <!-- Question 5 -->
+        <p>Consider your assessment approach. Are students given multiple opportunities to demonstrate the process of learning? For example, does your course include low-stakes or formative assessments before higher-stakes, summative assessments?</p>
+        <label><input type="radio" name="q5" value="yes" onchange="handleQ5Change(this.value)"> Yes</label><br>
+        <label><input type="radio" name="q5" value="no" onchange="handleQ5Change(this.value)"> No</label>
+        <div id="q5-feedback"></div>
+        <br>
+        <!-- Question 6 -->
+        <p>Does the course employ one or more methods for promoting academic integrity in assessments, such as:</p>
+        <div class="grid-2x4">
+            <label><input type="checkbox" name="section4-q6-options" value="Option 1"
+                data-label="Academic Integrity policy is integrated into the course syllabus" onchange="handleQ6Change(event)"> Academic Integrity policy is integrated into the course syllabus</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 2"
+                data-label="Share guidance to students around ethical decision making" onchange="handleQ6Change(event)"> Share guidance to students around ethical decision making</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 3"
+                data-label="Use of formative and ungraded assessments" onchange="handleQ6Change(event)"> Use of formative and ungraded assessments</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 4" data-label="Clear communication of expectations - for example, what constitutes cheating, plagiarism, and unauthorized collaboration; what type of assistance or collaboration is allowed in each assignment" onchange="handleQ6Change(event)"> Clear communication of expectations - for example, what constitutes cheating, plagiarism, and unauthorized collaboration; what type of assistance or collaboration is allowed in each assignment</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 5"
+                    data-label="Proctoring software for online exams" onchange="handleQ6Change(event)"> Proctoring software for online exams</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 6"
+                    data-label="Guidance on proper citation techniques" onchange="handleQ6Change(event)"> Guidance on proper citation techniques</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 7"
+                data-label="Regular updating and rotating of exam questions and assignment topics"
+                onchange="handleQ6Change(event)"> Regular updating and rotating of exam questions and assignment topics</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 8"
+                data-label="Assessments that capitalize on human durable skills" onchange="handleQ6Change(event)"> Assessments that capitalize on human durable skills</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 9"
+                data-label="Model attribution of GenAI in the course instructions" onchange="handleQ6Change(event)"> Model attribution of GenAI in the course instructions</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 10"
+                data-label="Require citation of GenAI in assignments and assessments " onchange="handleQ6Change(event)"> Require citation of GenAI in assignments and assessments</label>
+            <label><input type="checkbox" name="section4-q6-options" value="Option 11"
+                    data-label="Open discussion about academic integrity and/or GenAI" onchange="handleQ6Change(event)"> Open discussion about academic integrity and/or GenAI</label>
+            <label><input type="checkbox" name="section4-q6-options" id="q6-other-checkbox" value="Other"
+                    onchange="handleQ6OtherCheckbox()"> Other</label>
+            <textarea id="q6-other-text" style="display:none;" rows="2" cols="50"
+                placeholder="Please specify..."></textarea>
+        </div>
+        <button onclick="submitSection4()">Get Feedback</button>
+        <div id="section4-feedback"></div>
+        <button onclick="previousSection()">Previous</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 5 - Course Policies -->
+    <div id="section5" class="section">
+        <h2>Course Policies</h2>
+        <p>Does the course syllabus include a clear policy on student GenAI use?</p>
+        <label><input type="radio" name="q7" value="Yes, the syllabus has a GenAI policy." onchange="handleQ7Change(this.value)"> Yes, the syllabus has a GenAI policy.</label><br>
+        <label><input type="radio" name="q7" value="No, the syllabus doesn't have a GenAI policy." onchange="handleQ7Change(this.value)"> No, the syllabus doesn't have a GenAI policy.</label>
+        <div id="q7-feedback"></div>
+        <div style="display: none;" id="q7-follow-on">
+            <p>Remember that students are looking for clear guidance from their faculty when it comes to if, where, and how GenAI may be used in a course. Outlined below is a list of key elements to consider including in your GenAI policy. Select up to three checkboxes to explore areas of interest and review sample statements that may help you to craft or improve your policy.</p>
+            <label><input type="checkbox" value="Clearly define GenAI tools and any allowed use." onclick="coursePolicyFollowOn(this.value)"> Clearly define GenAI tools and any allowed use.</label><br>
+            <label><input type="checkbox" value="Articulate allowed and prohibited uses with specific scenarios." onclick="coursePolicyFollowOn(this.value)"> Articulate allowed and prohibited uses with specific scenarios.</label><br>
+            <label><input type="checkbox" value="Identify potential consequences for prohibited GenAI use, including the accountability process." onclick="coursePolicyFollowOn(this.value)"> Identify potential consequences for prohibited GenAI use, including the accountability process.</label><br>
+            <label><input type="checkbox" value="Share a detailed GenAI policy rationale." onclick="coursePolicyFollowOn(this.value)"> Share a detailed GenAI policy rationale.</label><br>
+            <label><input type="checkbox" value="Articulate expectations for GenAI disclosure and attribution (citation)." onclick="coursePolicyFollowOn(this.value)"> Articulate expectations for GenAI disclosure and attribution (citation).</label><br>
+            <label><input type="checkbox" value="Share strategies for responsible GenAI use in learning." onclick="coursePolicyFollowOn(this.value)"> Share strategies for responsible GenAI use in learning.</label><br>
+            <label><input type="checkbox" value="Foster open dialogue about AI use in the course and beyond." onclick="coursePolicyFollowOn(this.value)"> Foster open dialogue about AI use in the course and beyond.</label>
+        </div>
+        <p class="lato-bold" id="checkboxLimitMsg2" style="font-weight: bold; color: #A00000; display: none;">You can select up to 3 policies at a time.</p>
+        <div style="display: none;" id="q7-follow-on-feedback"></div>
+
+        <button onclick="previousSection()">Previous</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+    <!-- Section 6 - Next Steps -->
+    <div id="section6" class="section">
+        <h2>Next Steps</h2>
+        Adapting courses to use or restrict GenAI tools is imperative to the effectiveness of course learning outcomes as the technology evolves and is increasingly adopted by students. Now that you have considered the current state of your course, please answer one final question about your possible next steps with that course. The selection you make below will generate considerations and resources for you as part of a final, printable summary of all of your answers.
+        <p>Which of the following approaches might you take in your course going forward?
+        </p>
+        <div><label><input type="radio" name="q8" value="build-in-purposeful" onchange="handleQ8Change(this.value)"> Build in purposeful and guided student
+                use of GenAI tools.</label></div>
+        <div><label><input type="radio" name="q8" value="clearly-delineate" onchange="handleQ8Change(this.value)"> Clearly delineate why GenAI tool use is not
+                allowed for any activities.</label></div>
+        <div><label><input type="radio" name="q8" value="some-combination" onchange="handleQ8Change(this.value)"> Some combination of integrating and
+                restricting GenAI tool use.</label></div>
+        <div id="q8-feedback"></div>
+        <br>
+        <br>
+        <button onclick="previousSection()">Previous</button>
+        <button onclick="nextSection()">Next</button>
+    </div>
+
+
+    <!-- Summary -->
+    <div id="summary" class="section">
+        <button style="float: right;" onclick="printSummary()">Print/Save to PDF</button>
+        <div id="summary-content" class="summary"></div>
+    </div>
+
+    <script src="cart_script.js"></script>
+
+</body>
+
+</html>

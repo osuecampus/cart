@@ -1,0 +1,278 @@
+/* Course AI Resilience Tracker (CART) Tool.
+HTML and JavaScript designed and built by Dr Philip Chambers, Instructional Design Specialist at Oregon State University Ecampus.
+Text content and plan designed by Ashlee Foster (Instructional Design Specialist), Dana Simionescu (Instructional Design Specialist), Philip Chambers (Instructional Design Specialist), Katherine McAlvage (Associate Director, Course Development and Training) and Cub Kahn (Blended & Hybrid Learning Consultant and College Liaison) of Oregon State University Ecampus.
+This work created by Oregon State University Ecampus is licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).*/
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.grid-2x4 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.summary {
+    white-space: pre-wrap;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    line-height: 1.3;
+    margin: 0;
+    padding: 20px;
+    max-width: 1250px;
+}
+
+.lato-thin {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.lato-light {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.lato-black {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.lato-thin-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.lato-light-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.lato-regular-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.lato-bold-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.lato-black-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 22pt;
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 16pt;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+h3 {
+    font-size: 14pt;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.question,
+.framework,
+.vulnerability-levels {
+    margin-bottom: 20px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+
+.suggest-box {
+    border: 1px solid #6ab0de;
+    border-radius: 5px;
+    background-color: #e7f2fc;
+    padding: 5px 5px 5px 10px;
+    margin: 18px 0px 0px 0px;
+    color: #1b1b1b;
+    max-width: 1250px;
+}
+
+.suggest-box ul {
+    /* list-style-type: none; */
+    font-size: 16px;
+    line-height: 1rem;
+}
+
+.suggest-box li {
+    padding: 0 6px 5px 0;
+}
+
+.suggest-box p {
+    padding: 0 6px 0px 6px;
+}
+
+.suggest-check {
+    ul {
+        list-style: none;
+      }
+      
+      ul li:before {
+        content: '✓';
+      }
+}
+
+.suggest-box-next {
+    border: 1px solid #6ab0de;
+    border-radius: 5px;
+    background-color: #e7f2fc;
+    padding: 5px 5px 5px 10px;
+    margin: 18px 0px 0px 0px;
+    color: #1b1b1b;
+    max-width: 1250px;
+}
+
+.suggest-box-next ul {
+    font-size: 16px;
+    line-height: 1.25rem;
+}
+
+.suggest-box-next li {
+    padding: 0 6px 5px 0;
+}
+
+
+.suggest-box-next p {
+    padding: 0 6px 0px 6px;
+}
+
+.vuln-box {
+    border: 1px solid #c13e2a;
+    border-radius: 5px;
+    background-color: #faebe9;
+    padding: 0 6px 0px 0px;
+    margin: 10px 0px 0px 0px;
+    color: #1b1b1b;
+    max-width: 1250px;
+}
+
+.vuln-box ul {
+    list-style-type: none;
+    font-size: 15px;
+    line-height: 2rem;
+    padding-inline-start: 20px;
+}
+
+.answer-box {
+    border: 1px solid #353434;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    padding: 5px 5px 1px 10px;
+    margin: 18px 0px 0px 0px;
+    color: #1b1b1b;
+    max-width: 1250px;
+}
+
+.answer-box p {
+    margin: 5px 0;
+}
+
+
+textarea {
+    font-size: 14px;
+    font-family: "Lato", sans-serif;
+}
+
+#results {
+    display: none;
+}
+
+#verbsForm {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.checkbox-group label {
+    margin-bottom: 10px;
+}
+
+.checkbox-group label:last-child {
+    margin-bottom: 0;
+}
+
+.checked-choice {
+    font-weight: 600;
+}
+
+
+.verbs-box-remember {
+    border: 2px solid #1366d6;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.verbs-box-understand {
+    border: 2px solid #044a0c;
+    padding: 10px;
+}
+
+.blooms-category {
+    color: #00004F;
+    margin: 0;
+    padding: 5px 0;
+}
